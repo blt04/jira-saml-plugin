@@ -88,7 +88,7 @@ public class SsoJiraLoginServlet extends SsoLoginServlet {
 
 	@Override
 	protected String getDashboardUrl() {
-		return saml2Config.getBaseUrl() + "/secure/Dashboard.jspa";
+		return saml2Config.getBaseUrl() + "/";
 	}
 
 	@Override
