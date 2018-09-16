@@ -4,16 +4,22 @@ AJS.$(function() {
             loadCorpLogin(AJS.$("#login-form"));
         } else if (AJS.$("#loginform").length) {
             loadCorpLogin(AJS.$("#loginform"));
-        } else {
-            AJS.$("iframe").ready(function() {
-
-                var iframe = AJS.$("#gadget-0")
-                iframe.load(function() {
-                    loginForm = AJS.$("#" + iframe[0].id).contents().find("#loginform")
-                    loadCorpLogin(loginForm);
-                });
+        } else if (AJS.$("#dashboard").length) {
+            // The dashboard widget takes a while to load
+            // so listen for added DOM elements until gadgets load.
+            var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+            var obs = new MutationObserver(function(mutations, observer) {
+                if (AJS.$("#dashboard .gadget").length) {
+                    observer.disconnect();
+                    if (AJS.$("#loginform").length) {
+                        loadCorpLogin(AJS.$("#loginform"));
+                    }
+                }
             });
-        } // Your code here
+
+            var dashboardElement = AJS.$("#dashboard")[0];
+            obs.observe(dashboardElement, {childList: true, subtree: true});
+        }
     }, 0);
 
     function loadCorpLogin(loginForm) {
