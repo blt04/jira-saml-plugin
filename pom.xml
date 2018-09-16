@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.bitium.jira</groupId>
     <artifactId>SAML2PluginJira</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.5-RAPID7-20180915</version>
     <name>SAML 2.0 Single Sign-On for Jira</name>
-    <description>Easily configure Jira to support SAML 2.0</description>
+    <description>Easily configure Jira to support SAML 2.0, with Rapid7 modifications.  See: https://github.com/blt04/patches</description>
     <packaging>atlassian-plugin</packaging>
     <dependencies>
         <dependency>
